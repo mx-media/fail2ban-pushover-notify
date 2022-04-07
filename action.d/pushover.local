@@ -1,0 +1,19 @@
+[Definition]
+
+actionstart = /usr/bin/curl -s -F "token=<token>" -F "user=<user>" -F "title=[Fail2Ban] <hostname>" -F "message=Jail <name> has been started successfully." https://api.pushover.net/1/messages
+
+actionstop = /usr/bin/curl -s -F "token=<token>" -F "user=<user>" -F "title=[Fail2Ban] <hostname>" -F "message=Jail <name> has been stopped." https://api.pushover.net/1/messages
+
+#actioncheck =
+
+actionban = /usr/bin/curl -s -F "token=<token>" -F "user=<user>" -F "title=[Fail2Ban] <hostname>" -F "message=Banned IP: <ip> Lines containing IP: `grep '<ip>' <logpath>`" https://api.pushover.net/1/messages
+
+actionunban = /usr/bin/curl -s -F "token=<token>" -F "user=<user>" -F "title=[Fail2Ban] <hostname>" -F "message=Unbanned IP: <ip> Lines containing IP: `grep '<ip>' <logpath>`" https://api.pushover.net/1/messages
+
+[Init]
+
+name = default
+
+token = API KEY
+user = USER KEY
+hostname = `hostname`
